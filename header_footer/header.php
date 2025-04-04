@@ -1,6 +1,4 @@
-<?php
-function append_header() {
-            echo '<header class="">
+<header class="">
                 <nav class="navbar navbar-expand-lg">
                     <div class="container">
                     <a class="navbar-brand" href="index.php"><h2>Stand Blog<em>.</em></h2></a>
@@ -32,7 +30,3 @@ function append_header() {
                 </nav>
                 </header>';
 
-};
-
-append_header();
-?>
