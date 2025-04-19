@@ -27,6 +27,9 @@
                         </ul>
                     </div>
                     </div>
+                    <a href="log_in.php"><button type="button" class="btn btn-warning">Prihlásenie</button></a>
+                    <a href="register.php"><button type="button" class="btn btn-warning">Registrácia</button>
+
                 </nav>
                 </header>';
 
