@@ -31,7 +31,7 @@ https://templatemo.com/tm-551-stand-blog
                 <nav class="navbar navbar-expand-lg">
                     <div class="container">
                     <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav mx-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="index.php">Domov
                             <span class="sr-only">(current)</span>
@@ -44,16 +44,17 @@ https://templatemo.com/tm-551-stand-blog
                             <a class="nav-link" href="blog.php">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="post-details.php">Záznamy blogov</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="contact.php">Kontakt</a>
                         </li>
                         </ul>
                     </div>
                     </div>
-                    <a href="log_in.php"><button type="button" class="btn btn-warning">Prihlásenie</button></a>
-                    <a href="register.php"><button type="button" class="btn btn-warning">Registrácia</button>
+                    <a href="log_in.php" style="margin-right: 1%;">
+                        <button type="button" class="btn btn-warning">Prihlásenie</button>
+                    </a>
+                    <a href="register.php" style="margin-right: 5%;">
+                        <button type="button" class="btn btn-warning">Registrácia</button>
+                    </a>
 
                 </nav>
                 </header>';

@@ -2,7 +2,7 @@
 
 class Database{
     private $host = "localhost";
-    private $db = "zp_db";
+    private $db = "sj_db";
     private $user = "root";
     private $pass = "";
     private $charset = "utf8";

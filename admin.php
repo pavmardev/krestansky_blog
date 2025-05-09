@@ -6,8 +6,14 @@
     $article = new Article($conn);
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $del_btn = $_POST['delete_btn'];
-        $article->delete_article($del_btn);
+        if(isset($_POST['delete_btn'])) {
+            $del_btn = $_POST['delete_btn'];
+            $article->delete_article($del_btn);
+        }
+        elseif(isset($_POST['update_btn'])) {
+            $article_id = $_POST['update_btn'];
+            header("Location: update_article.php?id=" . $article_id);
+        }
     } 
 
 ?>
@@ -42,6 +48,9 @@
                     <th scope="col">
                         Id autora
                     </th>
+                    <th scope="col">
+                        Kategória
+                    </th>
                 </tr>
                 <?php 
                         $stmt = "SELECT * FROM clanky";
@@ -56,7 +65,9 @@
                             echo "<th>" . $substr . "</th>";
                             echo "<th>" . $row['datum'] . "</th>";
                             echo "<th>" . $row['pouzivatelia_id'] . "</th>";
-                            echo "<th><button type='submit' value='{$row['id']}' name='delete_btn' class='btn btn-danger'>Odstrániť</button></th></tr>";
+                            echo "<th>" . $row['kategorie_id'] . "</th>";
+                            echo "<th><button type='submit' value='{$row['id']}' name='delete_btn' class='btn btn-danger'>Odstrániť</button></th>";
+                            echo "<th><button type='submit' value='{$row['id']}' name='update_btn' class='btn btn-secondary'>Upraviť</button></th></tr>";
                         }
                 ?>
             </table>

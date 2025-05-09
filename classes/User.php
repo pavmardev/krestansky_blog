@@ -25,10 +25,10 @@ class User {
         }
     }
 
-    public function register($name, $surname, $password,$email) {
-        $date = date("y-m-d H:i:s");
-        if(isset($this->pdo)) {
-            $sql = "INSERT INTO pouzivatelia (meno, priezvisko, email, heslo, datum_vytvorenia, rola) VALUES (:meno, :priezvisko, :heslo, :email, :datum_vytvorenia, :rola)";
+    public function register($name, $surname, $email, $password) {
+        try {
+            $date = date("y-m-d H:i:s");
+            $sql = "INSERT INTO pouzivatelia (meno, priezvisko, email, heslo, datum_vytvorenia, rola) VALUES (:meno, :priezvisko, :email, :heslo, :datum_vytvorenia, :rola)";
 
             $hashedPass = password_hash($password, PASSWORD_DEFAULT);
             $rola = 0;
@@ -42,8 +42,12 @@ class User {
             $stmt->bindParam(":rola", $rola);
             $stmt->execute();
             header('Location: index.php');
-
+            echo '<script>alert("Registrácia prebehla úspešne")</script>';
+        } catch (Exception $e) {
+            echo '<script>alert("Používateľ s daným emailom už existuje")</script>';
         }
+
+        
     }
     
 }
