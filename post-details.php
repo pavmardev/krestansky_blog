@@ -8,13 +8,13 @@
     $comment = new Comment($conn);
 
     $article_id = $_GET['id'];
-    list($us_name, $us_sur, $date, $art_name, $art_text, $category) = $article->find_article($article_id);
-    $us_name = $us_name;
-    $us_sur = $us_sur;
-    $date = $date;
-    $na = $art_name;
-    $te = $art_text;
-    $ca = $category;
+    $res = $article->find_article($article_id);
+    $us_name = $res['meno'];
+    $us_sur = $res['priezvisko'];
+    $date = $res['clanky_datum'];
+    $na = $res['nazov'];
+    $te = $res['text_clanku'];
+    $ca = $res['kategoria'];
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
       if(isset($_POST['comment'])) {

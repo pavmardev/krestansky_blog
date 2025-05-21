@@ -1,33 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="TemplateMo">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-
-    <title>Stand Blog - About Page</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-stand-blog.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-<!--
-
-TemplateMo 551 Stand Blog
-
-https://templatemo.com/tm-551-stand-blog
-
--->
-  </head>
-
+<?php
+  include('header_footer/header.php');
+?>
   <body>
 
     <!-- ***** Preloader Start ***** -->
@@ -38,23 +11,14 @@ https://templatemo.com/tm-551-stand-blog
             <div></div>
         </div>
     </div>  
-    <!-- ***** Preloader End ***** -->
-
-    <!-- Header -->
-    <?php 
-      include('header_footer/header.php');
-    ?>
-
-    <!-- Page Content -->
-    <!-- Banner Starts Here -->
     <div class="heading-page header-text">
       <section class="page-heading">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
               <div class="text-content">
-                <h4>about us</h4>
-                <h2>more about us!</h2>
+                <h4>O nás</h4>
+                <h2>Kto sme a čo robíme?</h2>
               </div>
             </div>
           </div>
@@ -65,8 +29,20 @@ https://templatemo.com/tm-551-stand-blog
     <!-- Banner Ends Here -->
 
 
-    <section class="about-us">
+    <section class="about-us" style="text-align: center;">
+        <p class="text-left" style="width: 60%; margin: 0 auto;">
+                  Vitajte na našom katolíckom blogu – mieste, kde sa stretáva viera, poznanie a duchovný rast. Naším cieľom je vytvoriť priestor pre všetkých, ktorí hľadajú odpovede na otázky života, chcú prehĺbiť svoju vieru alebo sa inšpirovať príbehmi svätých a duchovnými podnetmi, ktoré pomáhajú žiť v súlade s evanjeliom.<br><br>
 
+                  Sme komunita ľudí rôznych vekových kategórií a životných skúseností, ktorých spája spoločná túžba rásť vo viere a lepšie chápať tajomstvá Boha a Cirkvi. Veríme, že v dnešnom hektickom a často materialistickom svete je potrebné znovu objaviť krásu a pravdu katolíckej viery, ktorá prináša pokoj, nádej a zmysel.<br><br>
+
+                  Na našom blogu nájdete články, ktoré pokrývajú široké spektrum tém: od teologických rozjímaní, cez duchovnú spiritualitu, modlitby, príbehy svätých, význam sviatostí až po históriu Cirkvi. Každý text je písaný s úctou k tradícii a zároveň otvorený dialógu so súčasným svetom a jeho výzvami.<br><br>
+
+                  Veríme, že viera nie je len súbor pravidiel, ale živý vzťah s Bohom, ktorý nás premieňa a vedie k láske k blížnym. Preto nás motivuje túžba pomôcť vám na vašej ceste viery – či už ste skúsený veriaci, ktorý chce prehĺbiť svoje poznanie, alebo niekto, kto práve začína hľadať zmysel života v Kristovi.<br><br>
+
+                  Sme radi, že ste sa rozhodli byť súčasťou našej duchovnej rodiny a veríme, že tu nájdete povzbudenie, poznanie a duchovnú silu, ktoré potrebujete. Ak máte otázky, podnety alebo návrhy, neváhajte nás kontaktovať – radi s vami budeme komunikovať a rásť spolu.<br><br>
+
+                  Nech vás Pán žehná na vašej ceste a sprevádza každým dňom.
+                </p>
     </section>
 
     <?php

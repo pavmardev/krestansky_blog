@@ -4,6 +4,7 @@
     include('classes/Article.php');
     $conn = new Database();
     $article = new Article($conn);
+    $result = $article->load_article();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(isset($_POST['delete_btn'])) {
@@ -53,21 +54,17 @@
                     </th>
                 </tr>
                 <?php 
-                        $stmt = "SELECT * FROM clanky";
-                        $exe = $conn->getConnection()->query($stmt);
-                        $result = $exe->fetchAll(PDO::FETCH_ASSOC);
-
-
+                    
                         foreach($result as $row) {
                             $substr = substr($row['text_clanku'], 0, 30);
-                            echo "<tr><th>" . $row['id'] . "</th>";
+                            echo "<tr><th>" . $row['clanky_id'] . "</th>";
                             echo "<th>" . $row['nazov'] . "</th>";
                             echo "<th>" . $substr . "</th>";
-                            echo "<th>" . $row['datum'] . "</th>";
-                            echo "<th>" . $row['pouzivatelia_id'] . "</th>";
-                            echo "<th>" . $row['kategorie_id'] . "</th>";
-                            echo "<th><button type='submit' value='{$row['id']}' name='delete_btn' class='btn btn-danger'>Odstrániť</button></th>";
-                            echo "<th><button type='submit' value='{$row['id']}' name='update_btn' class='btn btn-secondary'>Upraviť</button></th></tr>";
+                            echo "<th>" . $row['clanky_datum'] . "</th>";
+                            echo "<th>" . $row['meno'] . ' ' . $row['priezvisko'] . "</th>";
+                            echo "<th>" . $row['kategoria'] . "</th>";
+                            echo "<th><button type='submit' value='{$row['clanky_id']}' name='delete_btn' class='btn btn-danger'>Odstrániť</button></th>";
+                            echo "<th><button type='submit' value='{$row['clanky_id']}' name='update_btn' class='btn btn-secondary'>Upraviť</button></th></tr>";
                         }
                 ?>
             </table>

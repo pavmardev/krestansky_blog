@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `sj_db`.`pouzivatelia` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `meno` VARCHAR(15) NOT NULL,
   `priezvisko` VARCHAR(10) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL UNIQUE,
   `heslo` VARCHAR(45) NOT NULL,
   `datum_vytvorenia` DATETIME NOT NULL,
   `rola` TINYINT NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `sj_db`.`komentare` (
   CONSTRAINT `fk_komentare_clanky1`
     FOREIGN KEY (`clanky_id`)
     REFERENCES `sj_db`.`clanky` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 

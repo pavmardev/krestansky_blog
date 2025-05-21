@@ -1,5 +1,4 @@
 <?php
-    include('header_footer/header.php');
     include('classes/Database.php');
     include('classes/Article.php');
     $conn = new Database();
@@ -8,20 +7,18 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
       $article_name = $_POST['article_name'];
       $article_text = $_POST['article_text'];
+      $category = $_POST['category'];
 
-      $article->create_article($article_name, $article_text);
+      $article->create_article($article_name, $article_text, $category);
     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-</head>
+<?php
+  include('header_footer/header.php');
+?>
 <body>
-<form method="POST" style="margin-top: 10%;">
+<form method="POST" style="padding-top: 10%;">
   <div class="form-group">
     <label for="exampleFormControlInput1">Názov článku</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" name="article_name">
@@ -29,9 +26,20 @@
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Text článku</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" name="article_text" rows="3"></textarea>
+    <div class="form-group">
+      <label for="selectOption">Vyber kategóriu</label>
+      <select class="form-control" id="selectOption" name="category">
+        <option value="1">Teológia</option>
+        <option value="2">Spiritualita</option>
+        <option value="3">Svätí</option>
+        <option value="4">Modlitba</option>
+        <option value="5">Sviatosti</option>
+        <option value="6">Cirkevná história</option>
+      </select>
+</div>
     <button type="submit" class="btn btn-primary">Zverejniť</button>
   </div>
-  
+
 </form>
     <?php
       include('header_footer/footer.php');

@@ -1,23 +1,14 @@
-<!DOCTYPE html>
 
-
-  <body>
-
-    <!-- ***** Preloader Start ***** -->
+<?php 
+      include('header_footer/header.php');
+?>
     <div id="preloader">
         <div class="jumper">
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-
-    <!-- Header -->
-    <?php 
-      include('header_footer/header.php');
-    ?>
-
+    </div>   
     <section class="blog-posts">
       <div class="container">
         <div class="row">

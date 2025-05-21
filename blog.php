@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="sk">
 <?php
   include('header_footer/header.php');
   include('classes/Database.php');
@@ -17,13 +19,7 @@
             <div></div>
             <div></div>
         </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-
-    <!-- Header -->
-    <?php 
-      
-    ?>
+    </div>
 
     <!-- Page Content -->
     <!-- Banner Starts Here -->
