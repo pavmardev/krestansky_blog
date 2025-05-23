@@ -49,6 +49,14 @@ class User {
 
         
     }
+
+    public function load_users() {
+        $sql = "SELECT id, meno, priezvisko, datum_vytvorenia, rola FROM pouzivatelia";
+        $query = $this->db->query($sql);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
     
 }
 ?>

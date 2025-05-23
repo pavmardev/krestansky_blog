@@ -1,7 +1,6 @@
 <?php
   include('header_footer/header.php');
 ?>
-  <body>
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -39,9 +38,7 @@
 
                   Veríme, že viera nie je len súbor pravidiel, ale živý vzťah s Bohom, ktorý nás premieňa a vedie k láske k blížnym. Preto nás motivuje túžba pomôcť vám na vašej ceste viery – či už ste skúsený veriaci, ktorý chce prehĺbiť svoje poznanie, alebo niekto, kto práve začína hľadať zmysel života v Kristovi.<br><br>
 
-                  Sme radi, že ste sa rozhodli byť súčasťou našej duchovnej rodiny a veríme, že tu nájdete povzbudenie, poznanie a duchovnú silu, ktoré potrebujete. Ak máte otázky, podnety alebo návrhy, neváhajte nás kontaktovať – radi s vami budeme komunikovať a rásť spolu.<br><br>
-
-                  Nech vás Pán žehná na vašej ceste a sprevádza každým dňom.
+                  Sme radi, že ste sa rozhodli byť súčasťou našej duchovnej rodiny a veríme, že tu nájdete povzbudenie, poznanie a duchovnú silu, ktoré potrebujete. Ak máte otázky, podnety alebo návrhy, neváhajte nás kontaktovať – radi s vami budeme komunikovať a rásť spolu.
                 </p>
     </section>
 

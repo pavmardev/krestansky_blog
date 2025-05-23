@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="sk">
 <?php
   include('header_footer/header.php');
   include('classes/Database.php');
@@ -10,7 +8,6 @@
   $result = $article->load_article();
 ?>
 
-  <body>
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">

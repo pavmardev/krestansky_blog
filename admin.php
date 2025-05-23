@@ -2,9 +2,12 @@
     include('header_footer/header.php');
     include('classes/Database.php');
     include('classes/Article.php');
+    include('classes/User.php');
     $conn = new Database();
     $article = new Article($conn);
+    $user = new User($conn);
     $result = $article->load_article();
+    $res = $user->load_users();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(isset($_POST['delete_btn'])) {
@@ -30,6 +33,39 @@
         <button style="margin-top: 10%;" type="button" class="btn btn-primary btn-lg">Pridať článok</button>
     </a>
     <div style="margin-top: 5%;">
+        <h2 class="text-center">Databáza používateľov</h2>
+            <table class="table">
+                <tr>
+                    <th scope="col">
+                        Id používateľa
+                    </th>
+                    <th scope="col">
+                        Meno
+                    </th>
+                    <th scope="col">
+                        Priezvisko
+                    </th>
+                    <th scope="col">
+                        Dátum registrácie
+                    </th>
+                    <th scope="col">
+                        Rola
+                    </th>
+                </tr>
+                <?php 
+                    
+                        foreach($res as $row) {
+                            
+                            echo "<tr><th>" . $row['id'] . "</th>";
+                            echo "<th>" . $row['meno'] . "</th>";
+                            echo "<th>" . $row['priezvisko'] . "</th>";
+                            echo "<th>" . $row['datum_vytvorenia'] . "</th>";
+                            echo "<th>" . $row['rola'] . "</th>";
+                        }
+                ?>
+            </table>
+    </div>
+    <div>
         <h2 class="text-center">Databáza článkov</h2>
         <form method="POST">
             <table class="table">
@@ -47,7 +83,7 @@
                         Dátum
                     </th>
                     <th scope="col">
-                        Id autora
+                        Meno autora
                     </th>
                     <th scope="col">
                         Kategória
