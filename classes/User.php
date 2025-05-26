@@ -43,7 +43,7 @@ class User {
             $stmt->execute();
             header('Location: index.php');
             echo '<script>alert("Registrácia prebehla úspešne")</script>';
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             echo '<script>alert("Používateľ s daným emailom už existuje")</script>';
         }
 

@@ -40,7 +40,7 @@
     <!-- ***** Preloader End ***** -->
     <!-- Page Content -->
 
-    <section class="blog-posts grid-system">
+    <section class="blog-posts grid-system" style="margin-top: 0; padding-top:10%">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">

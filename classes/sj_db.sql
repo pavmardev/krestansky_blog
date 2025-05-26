@@ -19,10 +19,10 @@ USE `sj_db` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sj_db`.`pouzivatelia` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `meno` VARCHAR(15) NOT NULL,
-  `priezvisko` VARCHAR(10) NOT NULL,
-  `email` VARCHAR(45) NOT NULL UNIQUE,
-  `heslo` VARCHAR(45) NOT NULL,
+  `meno` VARCHAR(30) NOT NULL,
+  `priezvisko` VARCHAR(30) NOT NULL,
+  `email` VARCHAR(100) NOT NULL UNIQUE,
+  `heslo` VARCHAR(255) NOT NULL,
   `datum_vytvorenia` DATETIME NOT NULL,
   `rola` TINYINT NOT NULL,
   `datum_posledneho_prihlasenia` DATETIME NULL,
@@ -40,6 +40,13 @@ CREATE TABLE IF NOT EXISTS `sj_db`.`kategorie` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+INSERT INTO `sj_db`.`kategorie` (`kategoria`, `podkategoria`) VALUES
+('Teológia', NULL),
+('Spiritualita', NULL),
+('Svätí', NULL),
+('Modlitba', NULL),
+('Sviatosti', NULL),
+('Cirkevná história', NULL);
 
 -- -----------------------------------------------------
 -- Table `sj_db`.`clanky`
