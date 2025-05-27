@@ -7,23 +7,23 @@ class Comment {
         $this->db = $database->getConnection();
     }
 
-    public function insert_comment($commentary, $article_id) {
+    public function insert_comment($user_id,$commentary, $article_id) {
         $date = date("y-m-d H:i:s");
         $sql = "INSERT INTO komentare (komentar, datum, pouzivatelia_id, clanky_id) VALUES (:komentar, :datum,
         :pouzivatelia_id, :clanky_id)";
 
-        $id = 2;
+        $u_id = $user_id;
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':komentar', $commentary);
         $stmt->bindParam(':datum', $date);
-        $stmt->bindParam(':pouzivatelia_id', $id);
+        $stmt->bindParam(':pouzivatelia_id', $u_id);
         $stmt->bindParam(':clanky_id', $article_id);
         $stmt->execute();
     }
 
     public function load_comments($article_id) {
-        $sql = "SELECT komentare.id AS komentare_id, meno, priezvisko, komentare.datum AS komentare_datum, komentar FROM komentare INNER JOIN pouzivatelia ON komentare.pouzivatelia_id = pouzivatelia.id WHERE clanky_id = :clanky_id";
+        $sql = "SELECT komentare.id AS komentare_id, meno, priezvisko, komentare.datum AS komentare_datum, komentar, komentare.pouzivatelia_id AS komentar_pouzivatel FROM komentare INNER JOIN pouzivatelia ON komentare.pouzivatelia_id = pouzivatelia.id WHERE clanky_id = :clanky_id";
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':clanky_id', $article_id);

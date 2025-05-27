@@ -1,23 +1,23 @@
 <?php
+    include('header_footer/header.php');
     include('classes/Database.php');
     include('classes/Article.php');
     $conn = new Database();
     $article = new Article($conn);
+
+    if (!isset($_SESSION['user_id']) || $_SESSION['rola'] == '0') {
+      header('Location: index.php');
+      exit;
+    }
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
       $article_name = $_POST['article_name'];
       $article_text = $_POST['article_text'];
       $category = $_POST['category'];
 
-      $article->create_article($article_name, $article_text, $category);
+      $article->create_article($_SESSION['user_id'], $article_name, $article_text, $category);
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<?php
-  include('header_footer/header.php');
-?>
-<body>
 <form method="POST" style="padding-top: 10%;">
   <div class="form-group">
     <label for="exampleFormControlInput1">Názov článku</label>

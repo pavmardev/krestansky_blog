@@ -7,6 +7,11 @@
     $article = new Article($conn);
     $comment = new Comment($conn);
 
+    if(!isset($_GET['id'])) {
+      header('Location: blog.php');
+      exit;
+    }
+
     $article_id = $_GET['id'];
     $res = $article->find_article($article_id);
     $us_name = $res['meno'];
@@ -15,11 +20,12 @@
     $na = $res['nazov'];
     $te = $res['text_clanku'];
     $ca = $res['kategoria'];
+    
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-      if(isset($_POST['comment'])) {
+      if(isset($_POST['comment']) && isset($_SESSION['user_id'])) {
         $commentary = $_POST['comment'];
-        $comment->insert_comment($commentary, $article_id);
+        $comment->insert_comment($_SESSION['user_id'], $commentary, $article_id);
       } elseif(isset($_POST['delete_btn'])) {
           $delete_btn = $_POST['delete_btn'];
           $comment->delete_comment($delete_btn);
@@ -94,11 +100,14 @@
                                   <li>
                                     <div class="right-content">
                                   <h4>' . $row['meno'] . ' ' . $row['priezvisko'] . '<span>' .  $row['komentare_datum'] . '</span></h4>
-                                  <p>' . $row['komentar'] . '</p>
+                                  <p>' . $row['komentar'] . '</p>';
                                   
-                                  <form method="POST"><button type="submit" value="' . $row['komentare_id'] .'" name="delete_btn" class="btn btn-danger">Odstrániť</button>
-                                  </form>
-                                </div>
+                              if (isset($_SESSION['user_id']) && $row['komentar_pouzivatel'] == $_SESSION['user_id']) {
+                                  echo '<form method="POST"><button type="submit" value="' . $row['komentare_id'] .'" name="delete_btn" class="btn btn-danger">Odstrániť</button>
+                                  </form>';
+                              }
+                          
+                        echo      '</div>
                               </li>
                             </ul>
                           </div>';

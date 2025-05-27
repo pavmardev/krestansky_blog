@@ -7,21 +7,22 @@ class Article {
         $this->db = $database->getConnection();
     }
 
-    public function create_article($article_name, $article_text, $category) {
+    public function create_article($user_id, $article_name, $article_text, $category) {
         $date = date("y-m-d H:i:s");
             $sql = "INSERT INTO clanky (nazov, text_clanku, datum, pouzivatelia_id, kategorie_id) VALUES (:nazov, :text_clanku, :datum, :pouzivatelia_id, :kategorie_id)";
 
-            $id = 2;
+            $u_id = $user_id;
             $cat = (int) $category;
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(":nazov", $article_name);
             $stmt->bindParam(":text_clanku", $article_text);
             $stmt->bindParam(":datum", $date);
-            $stmt->bindParam(":pouzivatelia_id", $id);
+            $stmt->bindParam(":pouzivatelia_id", $u_id);
             $stmt->bindParam(":kategorie_id", $cat);
             $stmt->execute();
 
             header('Location: admin.php');
+            exit;
 
     }
 
@@ -32,6 +33,7 @@ class Article {
         $stmt->bindParam(':id', $del_btn);
         $stmt->execute();
         header('Location: admin.php');
+        exit;
 
     }
 
@@ -64,6 +66,7 @@ class Article {
         $stmt->bindParam(':article_text', $article_text);
         $stmt->execute();
         header('Location: admin.php');
+        exit;
     }
         
 }

@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="sk">
 <head>
@@ -23,9 +26,22 @@
           <li class="nav-item"><a class="nav-link" href="about.php">O nás</a></li>
           <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.php">Kontakt</a></li>
+          <?php
+          if (isset($_SESSION['rola']) && $_SESSION['rola'] == '1') {
+            echo '<li class="nav-item"><a class="nav-link" href="admin.php">Admin</a></li>';
+          }
+          ?>
         </ul>
       </div>
-      <a href="log_in.php" style="margin-right: 1%;"><button type="button" class="btn btn-warning">Prihlásenie</button></a>
+
+      <?php
+        if (!isset($_SESSION['user_id'])) {
+          echo '<a href="log_in.php" style="margin-right: 1%;"><button type="button" class="btn btn-warning">Prihlásiť</button></a>';
+        } else {
+          echo '<a href="log_out.php" style="margin-right: 1%;"><button type="button" class="btn btn-danger">Odhlásiť</button></a>';
+        }
+      ?>
+      
       <a href="register.php" style="margin-right: 5%;"><button type="button" class="btn btn-warning">Registrácia</button></a>
     </div>
   </nav>

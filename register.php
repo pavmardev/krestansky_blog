@@ -24,7 +24,7 @@
 <div class="col-md-6">
 <div class="card mt-5">
 <div class="card-header text-center">
-<h3>Login</h3>
+<h3>Registrácia</h3>
 </div>
 <div class="card-body">
 <form id="loginForm" method="POST">
@@ -44,7 +44,7 @@
         <label for="email">Heslo</label>
         <input type="password" class="form-control" name="password" id="password" placeholder="Heslo" required>
     </div>
-    <button type="submit" class="btn btn-primary btn-block">Prihlásiť</button>
+    <button type="submit" class="btn btn-primary btn-block">Registrovať</button>
 </form>
 </div>
 </div>

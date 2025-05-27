@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `sj_db`.`clanky` (
   CONSTRAINT `fk_clanky_pouzivatelia`
     FOREIGN KEY (`pouzivatelia_id`)
     REFERENCES `sj_db`.`pouzivatelia` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_clanky_kategorie1`
     FOREIGN KEY (`kategorie_id`)

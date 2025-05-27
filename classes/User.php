@@ -6,24 +6,22 @@ class User {
         $this->db = $database->getConnection();
     }
 
-    public function log_in($name, $surname, $password) {
-        if(isset($this->pdo)) {
-            $sql = "SELECT id FROM pouzivatelia WHERE meno = :meno AND priezvisko = :priezvisko AND heslo = :heslo";
+    public function log_in($name, $surname) {
+            $sql = "SELECT * FROM pouzivatelia WHERE meno = :meno AND priezvisko = :priezvisko";
 
             $stmt = $this->db->prepare($sql);
             $sub = $stmt->bindParam(":meno", $name);
             $sub = $stmt->bindParam(":priezvisko", $surname);
-            $sub = $stmt->bindParam(":heslo", $password);
             $exe = $stmt->execute();
 
             $res = $stmt->fetch(PDO::FETCH_ASSOC);
             if($res) {
-                header("Location: admin.php");
+                return $res;
             } else {
                 echo "<script>alert('Nesprávne zadané údaje')</script>";
+                return null;
             }
         }
-    }
 
     public function register($name, $surname, $email, $password) {
         try {
@@ -43,6 +41,7 @@ class User {
             $stmt->execute();
             header('Location: index.php');
             echo '<script>alert("Registrácia prebehla úspešne")</script>';
+            exit;
         } catch (PDOException $e) {
             echo '<script>alert("Používateľ s daným emailom už existuje")</script>';
         }

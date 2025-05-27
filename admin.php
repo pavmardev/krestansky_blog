@@ -3,6 +3,12 @@
     include('classes/Database.php');
     include('classes/Article.php');
     include('classes/User.php');
+
+    if (!isset($_SESSION['user_id']) || $_SESSION['rola'] == '0') {
+      header('Location: index.php');
+      exit;
+    }
+
     $conn = new Database();
     $article = new Article($conn);
     $user = new User($conn);

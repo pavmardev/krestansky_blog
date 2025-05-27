@@ -1,16 +1,33 @@
 <?php
     include('header_footer/header.php');
+    require('classes/Database.php');
+    require('classes/User.php');
+    $conn = new Database();
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
+        $password = $_POST['password'];
+
+        $user = new User($conn);
+        $res = $user->log_in($name, $surname);
+
+        if ($res != null) {
+            $pass = $res['heslo'];
+            if (password_verify($password, $pass)) {
+                $_SESSION['user_id'] = $res['id'];
+                $_SESSION['meno'] = $res['meno'];
+                $_SESSION['priezvisko'] = $res['priezvisko'];
+                $_SESSION['rola'] = $res['rola'];
+                header('Location: index.php');
+                exit;
+            } else {
+                echo "<script>alert('Nesprávne heslo')</script>";
+            }
+        }
+    }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Form</title>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<div style="margin-top: 10%;" class="container">
+<div style="padding-top: 5%;" class="container">
 <div class="row justify-content-center">
 <div class="col-md-6">
 <div class="card mt-5">
@@ -20,15 +37,15 @@
 <div class="card-body">
 <form id="loginForm" method="POST" action="log_in.php">
     <div class="form-group">
-        <label for="email">Meno</label>
+        <label for="name">Meno</label>
         <input type="text" class="form-control" name="name" id="name" placeholder="Zadajte meno" required>
     </div>
     <div class="form-group">
-        <label for="password">Priezvisko</label>
+        <label for="surname">Priezvisko</label>
         <input type="text" class="form-control" name="surname" id="surname" placeholder="Zadajte priezvisko" required>
     </div>
     <div class="form-group">
-        <label for="email">Heslo</label>
+        <label for="password">Heslo</label>
         <input type="password" class="form-control" name="password" id="password" placeholder="Heslo" required>
     </div>
     <button type="submit" class="btn btn-primary btn-block">Prihlásiť</button>

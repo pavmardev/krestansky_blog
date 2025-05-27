@@ -1,8 +1,14 @@
 <?php
+    include('header_footer/header.php');
     include('classes/Database.php');
     include('classes/Article.php');
     $conn = new Database();
     $article = new Article($conn);
+
+    if (!isset($_SESSION['user_id']) || $_SESSION['rola'] == '0') {
+      header('Location: index.php');
+      exit;
+    }
 
     $article_id = $_GET['id'];
     $res = $article->find_article($article_id);
@@ -17,12 +23,6 @@
       $article->update_article($article_name, $article_text, $article_id);
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<?php
-  include('header_footer/header.php');
-?>
-<body>
 <form method="POST" style="padding-top: 10%;">
   <div class="form-group">
     <label for="exampleFormControlInput1">Názov článku</label>
