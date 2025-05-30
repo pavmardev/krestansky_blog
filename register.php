@@ -10,12 +10,12 @@
         $password = $_POST['password'];
         $email = $_POST['email'];
 
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($password) > 5) {
             $user = new User($conn);
             $user->register($name, $surname, $email, $password);
         }
         else {
-            echo '<script>alert("Neplatný email")</script>';
+            echo '<script>alert("Neplatný email alebo heslo")</script>';
         }
     }
 ?>
@@ -41,7 +41,7 @@
         <input type="email" class="form-control" name="email" id="email" placeholder="Zadajte email" required>
     </div>
     <div class="form-group">
-        <label for="email">Heslo</label>
+        <label for="email">Heslo (dĺžka aspoň 6 znakov)</label>
         <input type="password" class="form-control" name="password" id="password" placeholder="Heslo" required>
     </div>
     <button type="submit" class="btn btn-primary btn-block">Registrovať</button>

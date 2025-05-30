@@ -37,12 +37,13 @@
       <?php
         if (!isset($_SESSION['user_id'])) {
           echo '<a href="log_in.php" style="margin-right: 1%;"><button type="button" class="btn btn-warning">Prihlásiť</button></a>';
+
+          echo '<a href="register.php" style="margin-right: 5%;"><button type="button" class="btn btn-warning">Registrácia</button></a>';
         } else {
+          echo '<p style="font-size: 25px; font-weight: bolder; margin-right: 20px; margin-bottom: 0; color: #181818">' . htmlspecialchars($_SESSION['meno']) . ' ' . htmlspecialchars($_SESSION['priezvisko']) . '</p>';
           echo '<a href="log_out.php" style="margin-right: 1%;"><button type="button" class="btn btn-danger">Odhlásiť</button></a>';
         }
       ?>
-      
-      <a href="register.php" style="margin-right: 5%;"><button type="button" class="btn btn-warning">Registrácia</button></a>
     </div>
   </nav>
 </header>

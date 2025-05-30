@@ -38,7 +38,7 @@
     <a href="create_article.php">
         <button style="margin-top: 10%;" type="button" class="btn btn-primary btn-lg">Pridať článok</button>
     </a>
-    <div style="margin-top: 5%;">
+    <div>
         <h2 class="text-center">Databáza používateľov</h2>
             <table class="table">
                 <tr>
@@ -71,7 +71,7 @@
                 ?>
             </table>
     </div>
-    <div>
+    <div style="margin-top: 3%;">
         <h2 class="text-center">Databáza článkov</h2>
         <form method="POST">
             <table class="table">
@@ -105,8 +105,11 @@
                             echo "<th>" . $row['clanky_datum'] . "</th>";
                             echo "<th>" . $row['meno'] . ' ' . $row['priezvisko'] . "</th>";
                             echo "<th>" . $row['kategoria'] . "</th>";
-                            echo "<th><button type='submit' value='{$row['clanky_id']}' name='delete_btn' class='btn btn-danger'>Odstrániť</button></th>";
-                            echo "<th><button type='submit' value='{$row['clanky_id']}' name='update_btn' class='btn btn-secondary'>Upraviť</button></th></tr>";
+
+                            if ($_SESSION['user_id'] == $row['pouzivatelia_id']) {
+                                echo "<th><button type='submit' value='{$row['clanky_id']}' name='delete_btn' class='btn btn-danger'>Odstrániť</button></th>";
+                                echo "<th><button type='submit' value='{$row['clanky_id']}' name='update_btn' class='btn btn-secondary'>Upraviť</button></th></tr>";
+                            }
                         }
                 ?>
             </table>

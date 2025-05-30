@@ -49,7 +49,7 @@ class Article {
     }
 
     public function load_article() {
-        $sql = "SELECT clanky.id AS clanky_id, meno, priezvisko, clanky.datum AS clanky_datum, nazov, text_clanku, kategoria FROM pouzivatelia INNER JOIN clanky ON pouzivatelia.id = clanky.pouzivatelia_id INNER JOIN kategorie ON clanky.kategorie_id = kategorie.id";
+        $sql = "SELECT clanky.id AS clanky_id, pouzivatelia_id, meno, priezvisko, clanky.datum AS clanky_datum, nazov, text_clanku, kategoria FROM pouzivatelia INNER JOIN clanky ON pouzivatelia.id = clanky.pouzivatelia_id INNER JOIN kategorie ON clanky.kategorie_id = kategorie.id";
         $stmt = $this->db->query($sql);
         $stmt->execute();
 

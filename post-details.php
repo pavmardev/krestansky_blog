@@ -26,6 +26,8 @@
       if(isset($_POST['comment']) && isset($_SESSION['user_id'])) {
         $commentary = $_POST['comment'];
         $comment->insert_comment($_SESSION['user_id'], $commentary, $article_id);
+        header('Location: post-details.php?id=' . $article_id);
+        exit;
       } elseif(isset($_POST['delete_btn'])) {
           $delete_btn = $_POST['delete_btn'];
           $comment->delete_comment($delete_btn);
@@ -61,10 +63,10 @@
                       <span><?php echo $ca ?></span>
                       <a href="post-details.php"><h4><?php echo $na ?></h4></a>
                       <ul class="post-info">
-                        <li><?php echo $us_name . ' ' . $us_sur ?></li>
+                        <li><?php echo htmlspecialchars($us_name) . ' ' . htmlspecialchars($us_sur) ?></li>
                         <li><?php echo $date ?></li>
                       </ul>
-                      <p><?php echo nl2br($te) ?></p>
+                      <p><?php echo nl2br(htmlspecialchars($te)) ?></p>
                       <div class="post-options">
                         <div class="row">
                           <div class="col-6">
@@ -99,8 +101,8 @@
                                 <ul>
                                   <li>
                                     <div class="right-content">
-                                  <h4>' . $row['meno'] . ' ' . $row['priezvisko'] . '<span>' .  $row['komentare_datum'] . '</span></h4>
-                                  <p>' . $row['komentar'] . '</p>';
+                                  <h4>' . htmlspecialchars($row['meno']) . ' ' . htmlspecialchars($row['priezvisko']) . '<span>' .  htmlspecialchars($row['komentare_datum']) . '</span></h4>
+                                  <p>' . htmlspecialchars($row['komentar']) . '</p>';
                                   
                               if (isset($_SESSION['user_id']) && $row['komentar_pouzivatel'] == $_SESSION['user_id']) {
                                   echo '<form method="POST"><button type="submit" value="' . $row['komentare_id'] .'" name="delete_btn" class="btn btn-danger">Odstrániť</button>
@@ -116,29 +118,33 @@
                   ?>
                   </div>
                 </div>
-                <div class="col-lg-12">
-                  <div class="sidebar-item submit-comment">
-                    <div class="sidebar-heading">
-                      <h2>Váš komentár</h2>
-                    </div>
-                    <div class="content">
-                      <form id="comment" method="POST">
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <fieldset>
-                              <textarea name="comment" rows="6" id="message" placeholder="Type your comment" required=""></textarea>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-12">
-                            <fieldset>
-                              <button type="submit" id="form-submit" class="main-button">Pridať</button>
-                            </fieldset>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <?php
+                    if(isset($_SESSION['user_id'])) {
+                      echo '<div class="col-lg-12">
+                              <div class="sidebar-item submit-comment">
+                                <div class="sidebar-heading">
+                                  <h2>Váš komentár</h2>
+                                </div>
+                                <div class="content">
+                                  <form id="comment" method="POST">
+                                    <div class="row">
+                                      <div class="col-lg-12">
+                                        <fieldset>
+                                          <textarea name="comment" rows="6" id="message" placeholder="Type your comment" required=""></textarea>
+                                        </fieldset>
+                                      </div>
+                                      <div class="col-lg-12">
+                                        <fieldset>
+                                          <button type="submit" id="form-submit" class="main-button">Pridať</button>
+                                        </fieldset>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>';
+                    }
+                ?>
               </div>
             </div>
           </div>
