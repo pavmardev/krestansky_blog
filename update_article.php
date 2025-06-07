@@ -1,7 +1,7 @@
 <?php
     include('header_footer/header.php');
-    include('classes/Database.php');
-    include('classes/Article.php');
+    require_once('classes/Database.php');
+    require_once('classes/Article.php');
     $conn = new Database();
     $article = new Article($conn);
 

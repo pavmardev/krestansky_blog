@@ -1,8 +1,8 @@
 <?php
     include('header_footer/header.php');
-    include('classes/Database.php');
-    include('classes/Article.php');
-    include('classes/Comments.php');
+    require_once('classes/Database.php');
+    require_once('classes/Article.php');
+    require_once('classes/Comments.php');
     $conn = new Database();
     $article = new Article($conn);
     $comment = new Comment($conn);

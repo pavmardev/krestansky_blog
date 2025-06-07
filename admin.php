@@ -1,8 +1,8 @@
 <?php
     include('header_footer/header.php');
-    include('classes/Database.php');
-    include('classes/Article.php');
-    include('classes/User.php');
+    require_once('classes/Database.php');
+    require_once('classes/Article.php');
+    require_once('classes/User.php');
 
     if (!isset($_SESSION['user_id']) || $_SESSION['rola'] == '0') {
       header('Location: index.php');
@@ -27,14 +27,6 @@
     } 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
     <a href="create_article.php">
         <button style="margin-top: 10%;" type="button" class="btn btn-primary btn-lg">Pridať článok</button>
     </a>
